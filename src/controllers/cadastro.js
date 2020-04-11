@@ -16,14 +16,18 @@ module.exports = {
     },
     async createTalento(req, res) {
         try {
-            const {nome, cidade, telefone, email} = req.body;
+            const id = crypto.randomBytes(3).toString("HEX")
+            let time = moment().format("YYYYMMDDhhmms")
+            const {nome, profissao, telefone, email} = req.body;
             await connection("talentos").insert({
+                id,
+                time,
                 nome,
-                cidade,
+                profissao,
                 telefone,
                 email
             })
-            res.json("Ok")
+            res.json(res.status)
         } catch (err) {
             res.json(res.status)
         }

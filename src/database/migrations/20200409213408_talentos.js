@@ -4,7 +4,7 @@ exports.up = function(knex) {
     table.string("id").primary();
     table.string('time').notNullable();
     table.string("nome").notNullable();
-    table.string("cidade").notNullable();
+    table.string("profissao").notNullable();
     table.string("telefone").notNullable();
     table.string("email").notNullable();
   })
