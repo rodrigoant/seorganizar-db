@@ -1,13 +1,13 @@
 const connection = require("../database/connection")
 const crypto = require("crypto")
-const moment = require("moment")
+const moment = require("moment-timezone")
 
 module.exports = {
     async createVaga(req, res) {
         try {
             const { empresa, uf, cidade, vaga, resumo, link, contato, descricao } = req.body;
             const id = crypto.randomBytes(3).toString("HEX")
-            let time = moment().format("YYYYMMDDhhmms")
+            let time = moment().tz("America/Sao_Paulo").format("YYYYMMDDhhmms")
             await connection("vagas").insert({id, time, empresa, uf, cidade, vaga, resumo, link, contato, descricao})
         } catch (err) {
             alert("erro")
