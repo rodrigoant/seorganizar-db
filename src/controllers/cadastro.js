@@ -7,7 +7,7 @@ module.exports = {
         try {
             const { empresa, uf, cidade, vaga, resumo, link, contato, descricao } = req.body;
             const id = crypto.randomBytes(3).toString("HEX")
-            let time = moment().tz("America/Sao_Paulo").format("YYYYMMDDhhmms")
+            let time = moment().tz("America/Sao_Paulo").format("YYYYMMDDHHmms")
             await connection("vagas").insert({id, time, empresa, uf, cidade, vaga, resumo, link, contato, descricao})
         } catch (err) {
             alert("erro")
